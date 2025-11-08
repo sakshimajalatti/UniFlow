@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniFlow Home</title>
+    <!-- Load Tailwind CSS and Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Tailwind Configuration (for Inter font, which is standard) */
+        :root {
+            --color-primary: #dc2626; /* red-600 for main accents */
+            --color-light-red: #fef2f2; /* red-50 for backgrounds */
+            --color-dark-red: #991b1b; /* red-800 for dark accents */
+        }
+        
+        .font-sans { font-family: 'Inter', sans-serif; }
+
+        /* Custom Styles for the UniFlow Score Circle */
+        .score-circle {
+            position: relative;
+            width: 8rem; /* w-32 */
+            height: 8rem; /* h-32 */
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 800;
+            background: conic-gradient(
+                var(--color-primary) 0%, /* Start of the red arc */
+                var(--color-primary) 95%, /* 95% completion (9.5/10) */
+                #f3f4f6 95%, /* Start of the light gray remainder */
+                #f3f4f6 100%
+            );
+        }
+
+        .score-text {
+            /* Create the inner white circle appearance */
+            background-color: white;
+            padding: 1rem 0;
+            width: 7rem;
+            height: 7rem;
+            border-radius: 50%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 0 0 4px #e5e7eb; /* Subtle inner border/ring */
+        }
+        
+        /* Utility for smooth transitions on hover */
+        .card-hover-effect {
+            transition: all 0.2s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1);
+        }
+        
+        /* Mobile adjustments for the main grid */
+        @media (max-width: 1023px) {
+            .main-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            .sidebar {
+                display: none; /* Hide sidebar on small screens for better content view */
+            }
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <div class="flex min-h-screen">
+        <!-- 1. LEFT SIDEBAR (Matching Image 2) -->
+        <aside class="sidebar w-64 bg-white border-r border-gray-200 flex flex-col justify-between p-4 shadow-xl shadow-gray-200/50">
+            <div>
+                <h1 class="text-4xl font-extrabold mb-8 text-gray-900">UniFlow</h1>
+                
+                <!-- Main Navigation -->
+                <nav class="space-y-2 mb-8">
+                    <a href="home.html" class="flex items-center space-x-3 p-3 rounded-xl bg-red-500 text-white font-semibold shadow-md shadow-red-500/30">
+                        <i data-lucide="home" class="w-5 h-5"></i><span>Home</span>
+                    </a>
+                    <a href="assignment.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="list-checks" class="w-5 h-5"></i><span>Assignments</span>
+                    </a>
+                    <a href="notification.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="calendar" class="w-5 h-5"></i><span>Notification</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="check-square" class="w-5 h-5"></i><span>Attendance</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="award" class="w-5 h-5"></i><span>Marks</span>
+                    </a>
+                </nav>
+
+                <!-- Reviews Section -->
+                <div class="mt-4">
+                    <h2 class="text-sm text-gray-500 font-bold mb-2 uppercase tracking-wider">Reviews</h2>
+                    <nav class="space-y-2">
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                            <i data-lucide="lightbulb" class="w-5 h-5"></i><span>Tips</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                            <i data-lucide="palette" class="w-5 h-5"></i><span>Design</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                            <i data-lucide="shield" class="w-5 h-5"></i><span>Operations</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5"></i><span>Overview</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Bottom User & Settings -->
+            <div class="space-y-4">
+                <a href="https://chat.novaapp.ai/login"><div class="flex items-center space-x-3 bg-gray-100 p-3 rounded-xl">
+                    <img src="nova.png" class="w-10 h-10 rounded-full" />
+                    <div>
+                        <p class="font-semibold text-sm text-gray-800">Nova</p>
+                        <p class="text-xs text-gray-500 truncate">Ask Me!</p>
+                    </div>
+                    </div></a>
+
+                    <a href="profile.html"><div class="flex items-center space-x-3 bg-gray-100 p-3 rounded-xl">
+                    <img src="https://placehold.co/40x40/f43f5e/ffffff?text=SN" class="w-10 h-10 rounded-full" />
+                    <div>
+                        <p class="font-semibold text-sm text-gray-800">Student Name</p>
+                        <p class="text-xs text-gray-500 truncate">studentname@email</p>
+                    </div>
+                </div></a>
+
+                <nav class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="settings" class="w-5 h-5"></i><span>Settings</span>
+                    </a>
+                    <a href="login.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="log-out" class="w-5 h-5"></i><span>Log out</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- 2. MAIN CONTENT (Matching Image 1) -->
+        <main class="flex-1 p-8 overflow-y-auto">
+            <header class="flex justify-between items-center mb-6">
+                <h1 class="text-3xl font-bold text-gray-900">Dashboard</h1>
+                <div class="flex items-center space-x-4">
+                    <div class="relative">
+                        <i data-lucide="search" class="w-4 h-4 text-gray-400 absolute left-3 top-1/2 transform -translate-y-1/2"></i>
+                        <input type="text" placeholder="Search" class="pl-10 pr-4 py-2 border border-gray-300 rounded-xl focus:ring-red-500 focus:border-red-500 w-40" />
+                    </div>
+                    <i data-lucide="bell" class="w-6 h-6 text-gray-700 cursor-pointer hover:text-red-500"></i>
+                    <i data-lucide="user-circle-2" class="w-8 h-8 text-gray-700 cursor-pointer hover:text-red-500"></i>
+                </div>
+            </header>
+
+            <!-- Main Grid Layout (Desktop: 3 columns, Mobile: 1 column) -->
+            <div class="main-grid grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+                <!-- Column 1 & 2 Span: New, UniFlow Overview, Feedback Summary, Reflections -->
+                <div class="lg:col-span-2 space-y-6">
+                    
+                    <!-- NEW Section (Row 1, Left) -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg border border-gray-200 card-hover-effect">
+                        <div class="flex justify-between items-center mb-4">
+                            <h2 class="text-xl font-bold text-gray-800">New</h2>
+                            <span class="px-3 py-1 bg-red-100 text-red-600 rounded-full text-sm font-semibold">3</span>
+                        </div>
+                        <div class="space-y-4">
+                            <!-- New Item -->
+                            <div class="flex items-center justify-between border-b pb-4 last:border-b-0 last:pb-0">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-xs font-semibold text-gray-600">
+                                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-700">Anonymous submitted an</p>
+                                        <p class="text-sm text-gray-900 font-bold">Math 101</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                    <span class="text-xs">1h ago</span>
+                                    <button class="text-red-600 hover:text-red-800 font-medium text-xs px-2 py-1 rounded">View</button>
+                                    <button class="text-gray-600 hover:text-red-600 font-medium text-xs px-2 py-1 rounded">Reply</button>
+                                    <button class="text-gray-600 hover:text-red-600 font-medium text-xs px-2 py-1 rounded">Archive</button>
+                                </div>
+                            </div>
+                            <!-- New Item 2 -->
+                             <div class="flex items-center justify-between border-b pb-4 last:border-b-0 last:pb-0">
+                                <div class="flex items-center space-x-4">
+                                    <div class="w-10 h-10 bg-gray-200 rounded-full flex items-center justify-center text-xs font-semibold text-gray-600">
+                                        <i data-lucide="user-circle" class="w-6 h-6"></i>
+                                    </div>
+                                    <div>
+                                        <p class="font-semibold text-gray-700">Anonymous submitted an</p>
+                                        <p class="text-sm text-gray-900 font-bold">Class Representative</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-2 text-sm text-gray-500">
+                                    <span class="text-xs">2h ago</span>
+                                    <button class="text-red-600 hover:text-red-800 font-medium text-xs px-2 py-1 rounded">View</button>
+                                    <button class="text-gray-600 hover:text-red-600 font-medium text-xs px-2 py-1 rounded">Reply</button>
+                                    <button class="text-gray-600 hover:text-red-600 font-medium text-xs px-2 py-1 rounded">Archive</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UNI FLOW OVERVIEW Section (Row 2, Left) -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg border border-gray-200 card-hover-effect flex items-center space-x-8">
+                        <h2 class="text-xl font-bold text-gray-800 w-1/3">UniFlow Overview</h2>
+                        
+                        <!-- Score Circle -->
+                        <div class="score-circle">
+                            <div class="score-text">
+                                <p class="text-5xl text-red-600 leading-none">9.5</p>
+                                <p class="text-xs font-normal text-gray-500">/10</p>
+                            </div>
+                        </div>
+
+                        <!-- Stat Breakdown Grid -->
+                        <div class="grid grid-cols-2 gap-4 flex-1">
+                            <div class="flex items-center space-x-2 text-sm">
+                                <i data-lucide="list-checks" class="w-4 h-4 text-gray-500"></i>
+                                <p class="font-bold text-gray-800">8.7</p>
+                                <p class="text-gray-600">Assignment</p>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <i data-lucide="clipboard-list" class="w-4 h-4 text-gray-500"></i>
+                                <p class="font-bold text-gray-800">7.2</p>
+                                <p class="text-gray-600">Attendance</p>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <i data-lucide="award" class="w-4 h-4 text-gray-500"></i>
+                                <p class="font-bold text-gray-800">8.8</p>
+                                <p class="text-gray-600">Marks</p>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <i data-lucide="arrow-down-right" class="w-4 h-4 text-red-500"></i>
+                                <p class="font-bold text-gray-800">9.0</p>
+                                <p class="text-gray-600">Progress</p>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <i data-lucide="lightbulb" class="w-4 h-4 text-gray-500"></i>
+                                <p class="font-bold text-gray-800">8.5</p>
+                                <p class="text-gray-600">Tips</p>
+                            </div>
+                            <div class="flex items-center space-x-2 text-sm">
+                                <i data-lucide="target" class="w-4 h-4 text-red-500"></i>
+                                <p class="font-bold text-gray-800">9.3</p>
+                                <p class="text-gray-600">Goals</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FEEDBACK SUMMARY & REFLECTIONS (Row 3, Spanning 2 columns) -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <!-- Feedback Summary -->
+                        <div class="bg-white p-6 rounded-3xl shadow-lg border border-gray-200 card-hover-effect">
+                            <h2 class="text-xl font-bold text-gray-800 mb-4">Feedback Summary</h2>
+                            <div class="space-y-4">
+                                <div class="flex items-center space-x-4">
+                                    <i data-lucide="users" class="w-6 h-6 text-red-500"></i>
+                                    <div>
+                                        <p class="font-semibold text-gray-800">Student Engagement</p>
+                                        <p class="text-sm text-gray-600">Q3 Performance Review</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <i data-lucide="book-open-text" class="w-6 h-6 text-red-500"></i>
+                                    <div>
+                                        <p class="font-semibold text-gray-800">Academics</p>
+                                        <p class="text-sm text-gray-600">Q3 Progress assessment for students</p>
+                                    </div>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <i data-lucide="activity" class="w-6 h-6 text-red-500"></i>
+                                    <div>
+                                        <p class="font-semibold text-gray-800">Performance</p>
+                                        <p class="text-sm text-gray-600">Insights for academic growth</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Reflections -->
+                        <div class="bg-white p-6 rounded-3xl shadow-lg border border-gray-200 card-hover-effect">
+                            <h2 class="text-xl font-bold text-gray-800 mb-4">Reflections</h2>
+                            <div class="space-y-4">
+                                <div>
+                                    <p class="text-sm font-medium mb-2 text-gray-700">What challenges did you face this semester?</p>
+                                    <div class="h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-red-500 rounded-full" style="width: 75%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium mb-2 text-gray-700">How effective was your study routine?</p>
+                                    <div class="h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-red-500 rounded-full" style="width: 45%;"></div>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p class="text-sm font-medium mb-2 text-gray-700">Are you prepared for upcoming exams?</p>
+                                    <div class="h-2.5 bg-gray-200 rounded-full overflow-hidden">
+                                        <div class="h-full bg-red-500 rounded-full" style="width: 85%;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Column 3: Progress Overview, Upcoming Tasks, Resources -->
+                <div class="lg:col-span-1 space-y-6">
+                    
+                    <!-- PROGRESS OVERVIEW (Row 1, Right) -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg border border-gray-200 card-hover-effect">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Progress Overview</h2>
+                        <div class="space-y-4 text-sm">
+                            <div class="flex justify-between items-start border-b pb-3 last:border-b-0 last:pb-0">
+                                <div class="flex items-start space-x-3">
+                                    <i data-lucide="book-open-text" class="w-4 h-4 text-red-500 mt-1"></i>
+                                    <p><span class="font-semibold text-gray-800">Student Team</span> is on track with their tasks.</p>
+                                </div>
+                                <a href="#" class="text-red-600 font-medium whitespace-nowrap text-xs px-2 py-1 rounded-full hover:bg-red-50">View</a>
+                            </div>
+                            <div class="flex justify-between items-start border-b pb-3 last:border-b-0 last:pb-0">
+                                <div class="flex items-start space-x-3">
+                                    <i data-lucide="user-check" class="w-4 h-4 text-red-500 mt-1"></i>
+                                    <p><span class="font-semibold text-gray-800">Attendance</span> updated their attendance records.</p>
+                                </div>
+                                <a href="#" class="text-red-600 font-medium whitespace-nowrap text-xs px-2 py-1 rounded-full hover:bg-red-50">View</a>
+                            </div>
+                            <div class="flex justify-between items-start">
+                                <div class="flex items-start space-x-3">
+                                    <i data-lucide="clipboard-list" class="w-4 h-4 text-red-500 mt-1"></i>
+                                    <p><span class="font-semibold text-gray-800">Task</span> enhanced for student success.</p>
+                                </div>
+                                <a href="#" class="text-red-600 font-medium whitespace-nowrap text-xs px-2 py-1 rounded-full hover:bg-red-50">Explore</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- UPCOMING TASKS (Row 2, Right) -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg border border-gray-200 card-hover-effect">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Upcoming Tasks</h2>
+                        <div class="space-y-4">
+                            <!-- Task Item -->
+                            <div class="flex items-center justify-between border-b pb-3 last:border-b-0 last:pb-0">
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://placehold.co/40x40/fca5a5/ffffff?text=J" class="w-10 h-10 rounded-lg" alt="Math icon" />
+                                    <p class="font-semibold text-gray-800">JAVA</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <a href="#" class="text-red-600 font-medium text-xs px-2 py-1 rounded-full hover:bg-red-50 border border-red-200">View</a>
+                                    <a href="#" class="text-gray-600 font-medium text-xs px-2 py-1 rounded-full hover:bg-gray-100 border border-gray-200">Reschedule</a>
+                                </div>
+                            </div>
+                            <!-- Task Item 2 -->
+                            <div class="flex items-center justify-between border-b pb-3 last:border-b-0 last:pb-0">
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://placehold.co/40x40/4ade80/ffffff?text=D" class="w-10 h-10 rounded-lg" alt="Science icon" />
+                                    <p class="font-semibold text-gray-800">DSA</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <a href="#" class="text-red-600 font-medium text-xs px-2 py-1 rounded-full hover:bg-red-50 border border-red-200">View</a>
+                                    <a href="#" class="text-gray-600 font-medium text-xs px-2 py-1 rounded-full hover:bg-gray-100 border border-gray-200">Reschedule</a>
+                                </div>
+                            </div>
+                            <!-- Task Item 3 -->
+                            <div class="flex items-center justify-between">
+                                <div class="flex items-center space-x-4">
+                                    <img src="https://placehold.co/40x40/94a3b8/ffffff?text=M" class="w-10 h-10 rounded-lg" alt="History icon" />
+                                    <p class="font-semibold text-gray-800">Math</p>
+                                </div>
+                                <div class="flex space-x-2">
+                                    <a href="#" class="text-red-600 font-medium text-xs px-2 py-1 rounded-full hover:bg-red-50 border border-red-200">View</a>
+                                    <a href="#" class="text-gray-600 font-medium text-xs px-2 py-1 rounded-full hover:bg-gray-100 border border-gray-200">Reschedule</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- RESOURCES (Row 3, Right) -->
+                    <div class="bg-white p-6 rounded-3xl shadow-lg border border-gray-200 card-hover-effect">
+                        <h2 class="text-xl font-bold text-gray-800 mb-4">Resources</h2>
+                        <div class="space-y-3">
+                            <a href="#" class="block p-3 bg-gray-50 rounded-xl hover:bg-gray-200 text-gray-700 font-medium">Help Center</a>
+                            <a href="#" class="block p-3 bg-gray-50 rounded-xl hover:bg-gray-200 text-gray-700 font-medium">Subscriptions</a>
+                            <a href="#" class="block p-3 bg-gray-50 rounded-xl hover:bg-gray-200 text-gray-700 font-medium">Manage Tasks</a>
+                            <a href="#" class="block p-3 bg-gray-50 rounded-xl hover:bg-gray-200 text-gray-700 font-medium">Learning Hub</a>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

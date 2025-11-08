@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniFlow Signup</title>
+    <style>
+        body {
+            /* Set a light background similar to the image's surrounding area */
+            background-image: url("bg8.png");
+            background-size: contain;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            position: relative; /* For the pink circle effect */
+            overflow: hidden; /* Hide the scrollbar caused by absolute positioning */
+        }
+
+        .container {
+            /* Grey background from the image */
+            background-color: #e0e0e0;
+            width: 500px;
+            height:550px;
+            padding: 40px 30px; /* Increased padding */
+            border-radius: 10px; /* More rounded corners */
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2); /* Stronger shadow */
+            text-align: left; /* Reset text-align for form elements */
+            z-index: 2; /* Ensure the form is above the background elements */
+        }
+
+        h1 {
+            font-size: 60px;
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            text-align: center; /* Center the title text */
+        }
+
+        label {
+            font-size: 20px;
+            font-weight: bold;
+            color: #444;
+            margin-bottom: 5px;
+            display: block; /* Make label take up full width */
+        }
+
+        input[type="text"], input[type="password"] {
+            width: 100%; /* Take full width of the container padding */
+            padding: 12px 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: #ffffff; /* White background for input fields */
+            color: #333;
+            font-size: 16px;
+            box-sizing: border-box; /* Include padding in width */
+        }
+
+        input::placeholder {
+            color: #aaa;
+        }
+
+        button {
+            width: 100%; /* Take full width */
+            padding: 12px;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            margin-top: 10px;
+            box-sizing: border-box;
+        }
+        a{
+            text-decoration: none;
+            color: white;
+        }
+
+        /* Styling for the red buttons */
+        .signup-button, .create-account-button {
+            background-color: #e51d36; /* Bright red color from image */
+            color: white;
+            transition: background-color 0.3s;
+        }
+
+        .signup-button:hover, .create-account-button:hover {
+            background-color: #c9192f;
+        }
+
+        .or-separator {
+            text-align: center;
+            font-size: 14px;
+            color: #777;
+            margin: 15px 0 0;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Join <br>UniFlow</h1>
+
+        <form>
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" placeholder="student@example.com" required><br>
+
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" placeholder="********" required><br>
+
+           <button type="submit" class="signup-button">Sign Up</button>
+
+
+            <p class="or-separator">or</p>
+
+            <button type="button" class="create-account-button">Create account</button>
+        </form>
+    </div>
+    
+        <script>
+document.querySelector('form').addEventListener('submit', function(e) {
+  e.preventDefault();
+  if (this.checkValidity()) {
+    window.location.href = 'home.html';
+  }
+});
+</script>
+</body>
+</html>

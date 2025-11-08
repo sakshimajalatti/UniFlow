@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UniFlow Profile</title>
+    <!-- Load Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Lucide Icons (used for navigation/stats) -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom styles to set Inter font and handle basic layout */
+        body {
+            font-family: 'Inter', sans-serif;
+        } 
+        /* Customize scrollbar for a cleaner look */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #d1d5db; /* Light gray */
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #9ca3af; /* Darker gray on hover */
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'uniflow-red': '#E51D36', /* Primary red color used for cards and buttons */
+                        'uniflow-dark': '#1F2937', /* Dark text color */
+                        'uniflow-gray': '#F9FAFB', /* Light background gray */
+                    },
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-uniflow-gray text-uniflow-dark min-h-screen">
+
+    <div class="flex h-screen">
+        
+        <!-- 1. Sidebar -->
+        <aside class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between p-4 shadow-lg sticky top-0 h-full">
+            <div>
+                <!-- Logo -->
+                <div class="text-4xl font-extrabold text-uniflow-dark mb-8 p-2">UniFlow</div>
+                
+                <!-- Main Navigation -->
+                <nav class="space-y-1">
+                    <!-- Nav Item: Active -->
+                    <a href="home.html" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150" >
+                        <i data-lucide="home" class="w-5 h-5"></i>
+                        <span>Home</span>
+                    </a>
+                    
+                    <!-- Other Nav Items -->
+                    <a href="assignment.html" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                        <i data-lucide="list-checks" class="w-5 h-5"></i>
+                        <span>Assignments</span>
+                    </a>
+                    <a href="notification.html" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                        <i data-lucide="calendar-check" class="w-5 h-5"></i>
+                        <span>Notification</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                        <i data-lucide="calendar" class="w-5 h-5"></i>
+                        <span>Attendance</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                        <i data-lucide="award" class="w-5 h-5"></i>
+                        <span>Marks</span>
+                    </a >
+                </nav>
+                
+                <!-- Reviews Section -->
+                <div class="mt-8">
+                    <h3 class="text-xs font-bold uppercase text-gray-500 mb-2 p-2">Reviews</h3>
+                    <nav class="space-y-1">
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                            <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                            <span>Tips</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                            <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+                            <span>Design</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                            <i data-lucide="tool" class="w-5 h-5"></i>
+                            <span>Operations</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                            <i data-lucide="eye" class="w-5 h-5"></i>
+                            <span>Overview</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- User Profile and Settings -->
+            <div>
+                <!-- User Card -->
+                <a href="https://chat.novaapp.ai/login"><div class="flex items-center space-x-3 p-3 rounded-xl bg-gray-100 mb-4">
+                    <img src="nova.png" alt="Student Profile" class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <div class="text-sm font-semibold truncate">Nova</div>
+                        <div class="text-xs text-gray-500 truncate">Ask Me!</div>
+                    </div>
+                </div></a>
+
+                <a href="profile.html"><div class="flex items-center space-x-3 p-3 rounded-xl bg-gray-100 mb-4">
+                    <img src="https://placehold.co/40x40/f3f4f6/374151?text=SN" alt="Student Profile" class="w-10 h-10 rounded-full object-cover">
+                    <div>
+                        <div class="text-sm font-semibold truncate">Student Name</div>
+                        <div class="text-xs text-gray-500 truncate">studentname@uni.org</div>
+                    </div>
+                </div></a>
+
+                <!-- Footer Navigation -->
+                <nav class="space-y-1">
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                        <i data-lucide="settings" class="w-5 h-5"></i>
+                        <span>Settings</span>
+                    </a>
+                    <a href="login.html" class="flex items-center space-x-3 p-3 rounded-xl text-gray-600 hover:bg-gray-50 hover:text-uniflow-dark transition duration-150">
+                        <i data-lucide="log-out" class="w-5 h-5"></i>
+                        <span>Log out</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- 2. Main Content Area -->
+        <main class="flex-1 p-8 overflow-y-auto">
+            
+            <!-- Header Section -->
+            <header class="flex items-center justify-between pb-6 border-b border-gray-200 mb-8">
+                <div class="flex items-center space-x-6">
+                    <!-- Profile Picture -->
+                    <img src="https://placehold.co/80x80/ef4444/ffffff?text=RS" alt="Jordan Profile Picture" class="w-20 h-20 rounded-xl object-cover">
+                    
+                    <div>
+                        <!-- Name and Handle -->
+                        <h1 class="text-3xl font-bold">Riyansh Sharma</h1>
+                        <p class="text-gray-500 mb-2">@riyansh_sharma</p>
+                        <!-- Stats Summary -->
+                        <p class="text-sm font-semibold">
+                            <span class="text-uniflow-dark">15 Assignments</span> 
+                            <span class="text-gray-300 mx-2">|</span> 
+                            <span class="text-uniflow-dark">5 Deadlines</span>
+                        </p>
+                    </div>
+                </div>
+                
+                <!-- Edit Profile Button -->
+                <button class="px-6 py-2 bg-uniflow-red text-white font-semibold rounded-lg shadow-md hover:bg-red-700 transition duration-150">
+                    Edit Profile
+                </button>
+            </header>
+
+            <!-- 3. Overview Section (Stat Cards) -->
+            <section class="mb-10">
+                <h2 class="text-xl font-bold mb-4">Overview</h2>
+                <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-4">
+                    
+                    <!-- Card Template -->
+                    <div class="flex flex-col justify-center items-center h-28 bg-uniflow-red text-white p-4 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <span class="text-3xl font-extrabold">16</span>
+                        <span class="text-xs font-medium">Current Tasks</span>
+                    </div>
+
+                    <div class="flex flex-col justify-center items-center h-28 bg-uniflow-red text-white p-4 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <span class="text-3xl font-extrabold">8</span>
+                        <span class="text-xs font-medium">Total Marks</span>
+                    </div>
+
+                    <div class="flex flex-col justify-center items-center h-28 bg-uniflow-red text-white p-4 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <span class="text-3xl font-extrabold">450</span>
+                        <span class="text-xs font-medium">Days Active</span>
+                    </div>
+                    
+                    <div class="flex flex-col justify-center items-center h-28 bg-uniflow-red text-white p-4 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <span class="text-3xl font-extrabold">9</span>
+                        <span class="text-xs font-medium">Achievements</span>
+                    </div>
+                    
+                    <div class="flex flex-col justify-center items-center h-28 bg-uniflow-red text-white p-4 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <span class="text-3xl font-extrabold">6</span>
+                        <span class="text-xs font-medium">Subjects</span>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 4. Milestones Section (Achievement Cards) -->
+            <section class="mb-10">
+                <h2 class="text-xl font-bold mb-4">Milestones</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <!-- Milestone 1: Top Performer -->
+                    <div class="flex items-center space-x-4 h-28 bg-uniflow-red text-white p-6 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <i data-lucide="trending-up" class="w-8 h-8 flex-shrink-0"></i>
+                        <div>
+                            <span class="block text-lg font-bold">Top Performer</span>
+                            <span class="block text-sm">Consistently high</span>
+                        </div>
+                    </div>
+
+                    <!-- Milestone 2: Study Leader -->
+                    <div class="flex items-center space-x-4 h-28 bg-uniflow-red text-white p-6 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <i data-lucide="star" class="w-8 h-8 flex-shrink-0"></i>
+                        <div>
+                            <span class="block text-lg font-bold">Study Leader</span>
+                            <span class="block text-sm">Mentored peers</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Milestone 3: Attendance -->
+                    <div class="flex items-center space-x-4 h-28 bg-uniflow-red text-white p-6 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <i data-lucide="trophy" class="w-8 h-8 flex-shrink-0"></i>
+                        <div>
+                            <span class="block text-lg font-bold">Attendance</span>
+                            <span class="block text-sm">Perfect attendance</span>
+                        </div>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- 5. Peer Updates Section (Contact/Activity Cards) -->
+            <section class="mb-10">
+                <h2 class="text-xl font-bold mb-4">Peer Updates</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+
+                    <!-- Peer 1: Alex T. -->
+                    <div class="flex items-center space-x-4 h-28 bg-uniflow-red text-white p-6 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <!-- Placeholder Image -->
+                        <img src="https://placehold.co/40x40/f87171/ffffff?text=AT" alt="Alex T. Profile" class="w-10 h-10 rounded-full object-cover flex-shrink-0">
+                        <div>
+                            <span class="block text-lg font-bold">Alex T.</span>
+                            <span class="block text-sm">Submitted an assignment</span>
+                        </div>
+                    </div>
+
+                    <!-- Peer 2: Riley K. -->
+                    <div class="flex items-center space-x-4 h-28 bg-uniflow-red text-white p-6 rounded-xl shadow-lg transform transition duration-200 hover:scale-[1.03]">
+                        <!-- Placeholder Image -->
+                        <img src="https://placehold.co/40x40/f87171/ffffff?text=RK" alt="Riley K. Profile" class="w-10 h-10 rounded-full object-cover flex-shrink-0">
+                        <div>
+                            <span class="block text-lg font-bold">Riley K.</span>
+                            <span class="block text-sm">Achieved a new goal</span>
+                        </div>
+                    </div>
+
+                    <!-- Peer 3: Add Contacts Button -->
+                    <button class="flex items-center justify-center h-28 bg-uniflow-red text-white p-6 rounded-xl shadow-lg font-bold text-lg hover:bg-red-700 transition duration-150">
+                        <i data-lucide="user-plus" class="w-6 h-6 mr-2"></i>
+                        <span>Add Contacts</span>
+                    </button>
+
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <!-- Script to render Lucide icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>UniFlow Notifications</title>
+    <!-- Load Tailwind CSS and Lucide Icons -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        /* Custom Styles for a clean, modern look */
+        .font-sans { font-family: 'Inter', sans-serif; }
+        
+        /* Utility for smooth hover effects on cards */
+        .card-hover-effect {
+            transition: all 0.2s ease-in-out;
+        }
+        .card-hover-effect:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 5px 10px -2px rgba(0, 0, 0, 0.08);
+        }
+
+        /* Styling for the red priority tag */
+        .priority-high {
+            background-color: #dc2626; /* red-600 */
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem; /* text-xs */
+            font-weight: 600;
+        }
+
+        /* Custom styling for the Assignment/Notification list items */
+        .notification-item {
+            padding: 1rem;
+            border-radius: 0.75rem;
+            background-color: white;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        .notification-item:hover {
+            background-color: #f9fafb; /* gray-50 */
+        }
+    </style>
+</head>
+
+<body class="bg-gray-100 font-sans">
+    <div class="flex min-h-screen">
+
+        <!-- 1. LEFT SIDEBAR (Based on Screenshot (17).png) -->
+        <aside class="w-64 bg-white border-r border-gray-200 flex flex-col justify-between p-4">
+            <div>
+                <h1 class="text-4xl font-extrabold mb-8 text-gray-900">UniFlow</h1>
+
+                <!-- Main Navigation -->
+                <nav class="space-y-2 mb-8">
+                    <!-- Note: The active item in Notifications.png is Home, but in Screenshot (17).png it is Assignments -->
+                    <a href="home.html" class="flex items-center space-x-3 p-3 rounded-xl bg-white-100 text-gray-700 font-medium hover:bg-red-50 hover:text-red-600">
+                        <i data-lucide="home" class="w-5 h-5"></i><span>Home</span>
+                    </a>
+                    <a href="assignment.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="list-checks" class="w-5 h-5"></i><span>Assignments</span>
+                    </a>
+                    <a href="notification.html" class="flex items-center space-x-3 p-3 rounded-lg bg-gray-100 text-red-600 font-semibold">
+                        <i data-lucide="bell" class="w-5 h-5"></i><span>Notification</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="check-square" class="w-5 h-5"></i><span>Attendance</span>
+                    </a>
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="award" class="w-5 h-5"></i><span>Marks</span>
+                    </a>
+                </nav>
+
+                <!-- Reviews Section -->
+                <div class="mt-4">
+                    <h2 class="text-sm text-gray-500 font-bold mb-2 uppercase tracking-wider">Reviews</h2>
+                    <nav class="space-y-2">
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                            <i data-lucide="lightbulb" class="w-5 h-5"></i><span>Tips</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                            <i data-lucide="palette" class="w-5 h-5"></i><span>Design</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                            <i data-lucide="shield" class="w-5 h-5"></i><span>Operations</span>
+                        </a>
+                        <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                            <i data-lucide="bar-chart-2" class="w-5 h-5"></i><span>Overview</span>
+                        </a>
+                    </nav>
+                </div>
+            </div>
+
+            <!-- Bottom User & Settings -->
+            <div class="space-y-4">
+                <a href="https://chat.novaapp.ai/login"><div class="flex items-center space-x-3 bg-gray-100 p-3 rounded-xl">
+                    <img src="nova.png" class="w-10 h-10 rounded-full" alt="Student Avatar" />
+                    <div>
+                        <p class="font-semibold text-sm text-gray-800">Nova</p>
+                        <p class="text-xs text-gray-500 truncate">Ask Me!</p>
+                    </div>
+                </div><br>
+
+                <a href="profile.html"><div class="flex items-center space-x-3 bg-gray-100 p-3 rounded-xl">
+                    <img src="https://placehold.co/40x40/f43f5e/ffffff?text=SN" class="w-10 h-10 rounded-full" alt="Student Avatar" />
+                    <div>
+                        <p class="font-semibold text-sm text-gray-800">Student Name</p>
+                        <p class="text-xs text-gray-500 truncate">studentname@email</p>
+                    </div>
+                </div>
+
+                <nav class="space-y-2">
+                    <a href="#" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="settings" class="w-5 h-5"></i><span>Settings</span>
+                    </a>
+                    <a href="login.html" class="flex items-center space-x-3 p-3 rounded-xl hover:bg-gray-100 text-gray-700 font-medium">
+                        <i data-lucide="log-out" class="w-5 h-5"></i><span>Log out</span>
+                    </a>
+                </nav>
+            </div>
+        </aside>
+
+        <!-- 2. MAIN CONTENT AREA (Based on Notifications.png) -->
+        <main class="flex-1 flex p-8 overflow-y-auto space-x-6">
+
+            <!-- COLUMN 1: Search and Recent Notifications -->
+            <div class="w-2/5 flex flex-col space-y-6">
+                
+                <!-- Search Assignments -->
+                <div class="flex items-center space-x-4">
+                    <input type="text" placeholder="Search assignments" class="flex-1 px-4 py-3 border border-gray-300 rounded-xl focus:ring-red-500 focus:border-red-500 text-lg" />
+                    <button class="bg-red-600 text-white font-semibold px-4 py-3 rounded-xl hover:bg-red-700 transition">New task</button>
+                    <button class="text-gray-700 hover:text-red-600">
+                        <i data-lucide="bell" class="w-6 h-6"></i>
+                    </button>
+                    <button class="text-gray-700 hover:text-red-600">
+                        <i data-lucide="eye" class="w-6 h-6"></i>
+                    </button>
+                </div>
+
+                <!-- Recent Notifications Card -->
+                <div class="bg-white p-6 rounded-3xl shadow-lg border border-gray-200 flex-1">
+                    <div class="flex justify-between items-center mb-4">
+                        <h2 class="text-xl font-bold text-gray-800">Recent notifications</h2>
+                        <i data-lucide="more-horizontal" class="w-5 h-5 text-gray-500 cursor-pointer"></i>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Notification Item 1: Upcoming assignments -->
+                        <div class="notification-item flex items-center space-x-4 shadow-sm">
+                            <i data-lucide="square-check" class="w-5 h-5 text-red-500"></i>
+                            <div class="flex-1">
+                                <p class="font-bold text-gray-900">Upcoming assignments</p>
+                                <p class="text-sm text-gray-600">Math homework due tomorrow.</p>
+                            </div>
+                            <img src="https://placehold.co/40x40/e0f2f1/0f766e?text=User" class="w-10 h-10 rounded-full" alt="User avatar" />
+                        </div>
+                        
+                        <!-- Notification Item 2: Project presentation -->
+                        <div class="notification-item flex items-center space-x-4 shadow-sm">
+                            <i data-lucide="square-check" class="w-5 h-5 text-red-500"></i>
+                            <div class="flex-1">
+                                <p class="font-bold text-gray-900">Project presentation</p>
+                                <p class="text-sm text-gray-600">Science lab report submitted.</p>
+                            </div>
+                            <img src="https://placehold.co/40x40/fee2e2/991b1b?text=P" class="w-10 h-10 rounded-full" alt="User avatar" />
+                        </div>
+
+                        <!-- Notification Item 3: History essay deadline -->
+                        <div class="notification-item flex items-center space-x-4 shadow-sm">
+                            <i data-lucide="square-check" class="w-5 h-5 text-red-500"></i>
+                            <div class="flex-1">
+                                <p class="font-bold text-gray-900">History essay deadline</p>
+                                <p class="text-sm text-gray-600">English reading assignment completed.</p>
+                            </div>
+                            <img src="https://placehold.co/40x40/dbeafe/1e40af?text=H" class="w-10 h-10 rounded-full" alt="User avatar" />
+                        </div>
+
+                        <!-- Notification Item 4: Group project updates -->
+                        <div class="notification-item flex items-center space-x-4 shadow-sm">
+                            <i data-lucide="square-check" class="w-5 h-5 text-red-500"></i>
+                            <div class="flex-1">
+                                <p class="font-bold text-gray-900">Group project updates</p>
+                                <p class="text-sm text-gray-600">Math quiz marked as incomplete.</p>
+                            </div>
+                            <img src="https://placehold.co/40x40/dcfce7/065f46?text=G" class="w-10 h-10 rounded-full" alt="Group avatar" />
+                        </div>
+                        
+                         <!-- Notification Item 5: Weekly overview -->
+                        <div class="notification-item flex items-center space-x-4 shadow-sm">
+                            <i data-lucide="square-check" class="w-5 h-5 text-red-500"></i>
+                            <div class="flex-1">
+                                <p class="font-bold text-gray-900">Weekly overview</p>
+                                <p class="text-sm text-gray-600">History project completed.</p>
+                            </div>
+                            <img src="https://placehold.co/40x40/fef3c7/b45309?text=W" class="w-10 h-10 rounded-full" alt="Weekly icon" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- COLUMN 2: Upcoming Assignments Detail Pane (Right Sidebar Content) -->
+            <div class="w-3/5 bg-gray-50 p-8 rounded-3xl border border-gray-200">
+                <div class="flex justify-between items-start mb-6">
+                    <h2 class="text-2xl font-bold text-gray-800">Upcoming assignments</h2>
+                    <i data-lucide="x" class="w-6 h-6 text-gray-500 cursor-pointer hover:text-gray-800"></i>
+                </div>
+
+                <div class="space-y-5 mb-8">
+                    <!-- Detail Row 1: Assigned to -->
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="user" class="w-5 h-5 text-gray-500"></i>
+                        <p class="text-gray-700 font-medium">Assigned to</p>
+                        <span class="ml-auto px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm font-medium">Me</span>
+                    </div>
+
+                    <!-- Detail Row 2: Due date -->
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="calendar" class="w-5 h-5 text-gray-500"></i>
+                        <p class="text-gray-700 font-medium">Due date</p>
+                        <span class="ml-auto px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm font-medium">This week</span>
+                    </div>
+
+                    <!-- Detail Row 3: Subjects -->
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="book-open" class="w-5 h-5 text-gray-500"></i>
+                        <p class="text-gray-700 font-medium">Subjects</p>
+                        <span class="ml-auto px-3 py-1 bg-gray-200 text-gray-700 rounded-full text-sm font-medium">New project</span>
+                    </div>
+
+                    <!-- Detail Row 4: Priority -->
+                    <div class="flex items-center space-x-4">
+                        <i data-lucide="alert-triangle" class="w-5 h-5 text-gray-500"></i>
+                        <p class="text-gray-700 font-medium">Priority</p>
+                        <span class="ml-auto priority-high">High</span>
+                    </div>
+                </div>
+                
+                <hr class="border-gray-300 my-8">
+
+                <!-- Files Section -->
+                <div class="mb-8">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Files</h3>
+                    <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200">
+                        <div class="flex items-center space-x-3 text-gray-500">
+                            <i data-lucide="file-x" class="w-5 h-5"></i>
+                            <p>No files attached</p>
+                        </div>
+                        <button class="bg-red-600 text-white font-semibold px-4 py-2 rounded-xl hover:bg-red-700 transition">Upload</button>
+                    </div>
+                </div>
+
+                <!-- Resources Section -->
+                <div class="mb-12">
+                    <h3 class="text-lg font-bold text-gray-800 mb-3">Resources</h3>
+                    <div class="flex items-center justify-between p-4 bg-white rounded-xl border border-gray-200">
+                        <div class="flex items-center space-x-3 text-gray-500">
+                            <i data-lucide="link" class="w-5 h-5"></i>
+                            <p>No resources added</p>
+                        </div>
+                        <button class="bg-red-600 text-white font-semibold px-4 py-2 rounded-xl hover:bg-red-700 transition">Add</button>
+                    </div>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex justify-end space-x-4">
+                    <button class="text-gray-700 font-semibold px-6 py-3 rounded-xl hover:bg-gray-200 transition border border-gray-300">Archive task</button>
+                    <button class="bg-red-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-red-700 transition shadow-lg shadow-red-500/50">Delete task</button>
+                </div>
+
+            </div>
+        </main>
+    </div>
+
+    <!-- Initialize Lucide Icons -->
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>
